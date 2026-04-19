@@ -7,6 +7,10 @@ cd laravel-tests
 # 3. Installer les dépendances
 composer install
 
+# 3.5 migration
+php artisan migrate --seed
+
+
 # 4. Lancer tous les tests
 php artisan test
 
