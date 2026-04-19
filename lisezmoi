@@ -1,0 +1,20 @@
+# 1. Créer le projet Laravel de base
+composer create-project laravel/laravel laravel-tests
+cd laravel-tests
+
+# 2. Copier tous les fichiers ci-dessus dans les bons répertoires
+
+# 3. Installer les dépendances
+composer install
+
+# 4. Lancer tous les tests
+php artisan test
+
+# 5. Tests unitaires uniquement (pas de DB, ultra-rapide)
+php artisan test --testsuite=Unit
+
+# 6. Tests de fonctionnalité uniquement
+php artisan test --testsuite=Feature
+
+# 7. Avec couverture de code (nécessite Xdebug ou PCOV)
+php artisan test --coverage
