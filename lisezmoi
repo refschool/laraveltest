@@ -2,14 +2,73 @@
 composer create-project laravel/laravel laravel-tests
 cd laravel-tests
 
+laravel-tests/
+├── app/
+│   ├── Http/Controllers/ProductController.php
+│   ├── Models/
+│   │   ├── Product.php
+│   │   └── User.php
+│   └── Services/
+│       ├── CartService.php
+│       └── DiscountService.php
+├── database/
+│   ├── factories/
+│   │   ├── ProductFactory.php
+│   │   └── UserFactory.php
+│   ├── migrations/
+│   │   ├── 0001_create_users_table.php
+│   │   └── 0002_create_products_table.php
+│   └── seeders/DatabaseSeeder.php
+├── routes/api.php
+├── tests/
+│   ├── TestCase.php
+│   ├── Unit/
+│   │   ├── Models/ProductTest.php
+│   │   └── Services/
+│   │       ├── CartServiceTest.php
+│   │       └── DiscountServiceTest.php
+│   └── Feature/ProductApiTest.php
+├── phpunit.xml
+└── composer.json
+
+
+
 # 2. Copier tous les fichiers ci-dessus dans les bons répertoires
+
+phpunit.xml
+.env.testing
+app/Models/Product.php
+app/Models/User.php  (écrasez l'existant)
+app/Services/CartService.php
+app/Services/DiscountService.php
+app/Http/Controllers/ProductController.php
+routes/api.php
+database/migrations/0001_01_01_create_users_table.php  (écrasez l'existant)
+database/migrations/0001_01_02_create_products_table.php
+database/factories/ProductFactory.php
+database/factories/UserFactory.php
+database/seeders/DatabaseSeeder.php
+tests/TestCase.php
+tests/Unit/Models/ProductTest.php
+tests/Unit/Services/CartServiceTest.php
+tests/Unit/Services/DiscountServiceTest.php
+tests/Feature/ProductApiTest.php
 
 # 3. Installer les dépendances
 composer install
 
+
 # 3.5 migration
 php artisan migrate --seed
 
+
+# 3.6   bootstrap/app.php 
+ajouter api: __DIR__.'/../routes/api.php',
+
+# 3.7 Installer Sanctum (api)
+php artisan install:api
+normalement il est effectué une migration pour la table des token sinon faire
+php artisan migrate
 
 # 4. Lancer tous les tests
 php artisan test
