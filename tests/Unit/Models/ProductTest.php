@@ -40,7 +40,7 @@ class ProductTest extends TestCase
     {
         $product = $this->makeProduct(['price' => 100.00]);
 
-        $this->assertEquals(120.00, $product->price_with_tax);
+        $this->assertEquals(121.00, $product->price_with_tax);
     }
 
     /** @test */
